@@ -5,7 +5,7 @@ public class Archer: ICharacter
 {
     private int health = 100;
 
-    private List<IItem> items = new List<IItem>();
+    private Inventory inventory = new Inventory();
 
     public Archer(string name)
     {
@@ -14,53 +14,15 @@ public class Archer: ICharacter
         this.AddItem(new Bow());
         this.AddItem(new Helmet());
     }
-
     public string Name { get; set; }
-
-    public int AttackValue
-    {
-        get
-        {
-            int value = 0;
-            foreach (IItem item in this.items)
-            {
-                if (item is IAttackItem)
-                {
-                    value += (item as IAttackItem).AttackValue;
-                }
-            }
-            return value;
-        }
-    }
-
-    public int DefenseValue
-    {
-        get
-        {
-            int value = 0;
-            foreach (IItem item in this.items)
-            {
-                if (item is IDefenseItem)
-                {
-                    value += (item as IDefenseItem).DefenseValue;
-                }
-            }
-            return value;
-        }
-    }
+    public int AttackValue => inventory.AttackValue;
+    public int DefenseValue => inventory.DefenseValue;
 
     public int Health
     {
-        get
-        {
-            return this.health;
-        }
-        private set
-        {
-            this.health = value < 0 ? 0 : value;
-        }
+        get => health;
+        private set => health = value < 0 ? 0 : value;
     }
-
     public void ReceiveAttack(int power)
     {
         if (this.DefenseValue < power)
@@ -76,11 +38,11 @@ public class Archer: ICharacter
 
     public void AddItem(IItem item)
     {
-        this.items.Add(item);
+        inventory.AddItem(item);
     }
 
     public void RemoveItem(IItem item)
     {
-        this.items.Remove(item);
+        inventory.RemoveItem(item);
     }
 }
