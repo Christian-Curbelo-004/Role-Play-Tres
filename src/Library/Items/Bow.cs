@@ -2,11 +2,6 @@ namespace Ucu.Poo.RoleplayGame;
 
 public class Bow: IAttackItem
 {
-    public int AttackValue
-    {
-        get
-        {
-            return 15;
-        }
-    }
+    public int AttackValue => 10;
+    public int DefenseValue => 0;
 }
