@@ -4,7 +4,7 @@ public interface ICharacter
 {
     string Name { get; set; }
 
-    int Health { get; }
+     int Health { get; set; }
 
     int AttackValue { get; }
 
@@ -14,7 +14,8 @@ public interface ICharacter
 
     void RemoveItem(IItem item);
 
-    void Cure();
+    void Cure(int health);
 
-    void ReceiveAttack(int power);
+    
+    void ReceiveAttack(int damage);
 }

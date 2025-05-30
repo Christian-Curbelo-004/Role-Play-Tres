@@ -3,7 +3,7 @@ namespace Ucu.Poo.RoleplayGame;
 
 public class Wizard: IMagicCharacter
 {
-    private int health = 100;
+    private int health = 80;
 
     private List<IItem> items = new List<IItem>();
 
@@ -48,9 +48,9 @@ public class Wizard: IMagicCharacter
             int value = 0;
             foreach (IItem item in this.items)
             {
-                if (item is IDefenseItem)
+                if (item is IDeffenseItem)
                 {
-                    value += (item as IDefenseItem).DefenseValue;
+                    value += (item as IDeffenseItem).DeffenseValue;
                 }
             }
             foreach (IMagicalItem item in this.magicalItems)
@@ -64,13 +64,13 @@ public class Wizard: IMagicCharacter
         }
     }
 
-    public int Health
+     public int Health
     {
         get
         {
             return this.health;
         }
-        private set
+         set
         {
             this.health = value < 0 ? 0 : value;
         }
@@ -84,7 +84,7 @@ public class Wizard: IMagicCharacter
         }
     }
 
-    public void Cure()
+    public void Cure(int health)
     {
         this.Health = 100;
     }

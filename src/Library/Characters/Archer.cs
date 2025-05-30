@@ -3,7 +3,7 @@ namespace Ucu.Poo.RoleplayGame;
 
 public class Archer: ICharacter
 {
-    private int health = 100;
+    public int health = 100;
 
     private Inventory inventory = new Inventory();
 
@@ -16,12 +16,18 @@ public class Archer: ICharacter
     }
     public string Name { get; set; }
     public int AttackValue => inventory.AttackValue;
-    public int DefenseValue => inventory.DefenseValue;
+    public int DefenseValue => inventory.DeffenseValue;
 
     public int Health
     {
-        get => health;
-        private set => health = value < 0 ? 0 : value;
+        get
+        {
+            return this.health;
+        }
+        set
+        {
+            this.health = value < 0 ? 0 : value;
+        }
     }
     public void ReceiveAttack(int power)
     {
@@ -31,7 +37,7 @@ public class Archer: ICharacter
         }
     }
 
-    public void Cure()
+    public void Cure(int health)
     {
         this.Health = 100;
     }
