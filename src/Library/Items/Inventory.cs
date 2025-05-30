@@ -15,7 +15,7 @@ public class Inventory
     }
 
     public int AttackValue => items.Sum(items => items.AttackValue); 
-    public int DefenseValue => items.Sum(items => items.DefenseValue);
+    public int DeffenseValue => items.Sum(items => items.DeffenseValue);
 }
     
 

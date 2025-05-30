@@ -1,6 +1,6 @@
 namespace Ucu.Poo.RoleplayGame;
 
-public interface IDefenseItem: IItem
+public interface IDeffenseItem: IItem
 {
-    int DefenseValue { get; }
+    int DeffenseValue { get; }
 }
