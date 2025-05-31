@@ -41,7 +41,7 @@ public class Wizard: IMagicCharacter
         }
     }
 
-    public int DefenseValue
+    public int DeffenseValue
     {
         get
         {
@@ -78,9 +78,9 @@ public class Wizard: IMagicCharacter
 
     public void ReceiveAttack(int power)
     {
-        if (this.DefenseValue < power)
+        if (this.DeffenseValue < power)
         {
-            this.Health -= power - this.DefenseValue;
+            this.Health -= power - this.DeffenseValue;
         }
     }
 

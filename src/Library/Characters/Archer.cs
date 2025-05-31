@@ -16,7 +16,7 @@ public class Archer: ICharacter
     }
     public string Name { get; set; }
     public int AttackValue => inventory.AttackValue;
-    public int DefenseValue => inventory.DeffenseValue;
+    public int DeffenseValue => inventory.DeffenseValue;
 
     public int Health
     {
@@ -31,9 +31,9 @@ public class Archer: ICharacter
     }
     public void ReceiveAttack(int power)
     {
-        if (this.DefenseValue < power)
+        if (this.DeffenseValue < power)
         {
-            this.Health -= power - this.DefenseValue;
+            this.Health -= power - this.DeffenseValue;
         }
     }
 

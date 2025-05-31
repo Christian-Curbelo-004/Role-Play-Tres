@@ -1,26 +1,24 @@
-﻿using System.ComponentModel.Design;
-using System.Data.SqlTypes;
+﻿namespace Ucu.Poo.RoleplayGame;
 
-namespace Ucu.Poo.RoleplayGame;
-
-public class Enemies : ICharacter
+public class Heroes : ICharacter
 {
     public string Name { get; set; }
     public int Health { get; set; }
-    public int VictoryPoints { get; private set; }
+    public int VictoryPoints { get; set; }
 
     private List<IItem> items = new List<IItem>();
 
-    public Enemies(string name, int health, int victoryPoints)
+    public Heroes(string name, int health, int victoryPoints)
     {
-        this.Name = name;
-        this.Health = health;
-        this.VictoryPoints = victoryPoints;
+        Name = name;
+        Health = health;
+        VictoryPoints = victoryPoints;
     }
 
     public void AddItem(IItem item)
     {
         items.Add(item);
+
     }
 
     public void RemoveItem(IItem item)
@@ -28,9 +26,9 @@ public class Enemies : ICharacter
         items.Remove(item);
     }
 
-    public void Cure(int health)
+    public void Cure(int Health)
     {
-        this.Health += health;
+        this.Health += Health;
     }
 
     public int AttackValue
@@ -40,11 +38,11 @@ public class Enemies : ICharacter
 
     public int DeffenseValue
     {
-        get { return items.Sum(item => item.DeffenseValue); }
+        get  {return items.Sum(item => item.DeffenseValue);}
     }
+
     public bool Attack(ICharacter target)
     {
-
         if (this.Health <= 0 || target.Health <= 0)
         {
             Console.WriteLine("No puede atacar si esta muerto o si el objetivo ya murio");
@@ -55,38 +53,21 @@ public class Enemies : ICharacter
         if (damage > 0)
         {
             target.Health -= damage;
+            if (target.Health <= 0 && target is Enemies enemy)
+            {
+                VictoryPoints += enemy.VictoryPoints;
+                Console.WriteLine($"Heroes won {enemy.VictoryPoints}  ");
+            }
         }
+
         return true;
     }
 
     public void ReceiveAttack(int damage)
     {
-        this.Health -= damage;
+       this.Health -= damage;
     }
 }
-
-
-       
-    
-    
-   
-   
     
 
-   
-
-
-
-
-
-
-
-
-
-
-    
-
-    
-    
-  
-    
+        

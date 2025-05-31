@@ -22,7 +22,7 @@ class Program
 
         Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
 
-        gimli.Cure();
+        gimli.Cure(100);
 
         Console.WriteLine($"Someone cured Gimli. Gimli now has ❤️ {gimli.Health}");
     }
