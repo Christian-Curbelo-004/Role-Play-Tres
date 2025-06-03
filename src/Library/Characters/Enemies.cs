@@ -1,5 +1,8 @@
-﻿using System.ComponentModel.Design;
-using System.Data.SqlTypes;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+
 
 namespace Ucu.Poo.RoleplayGame;
 

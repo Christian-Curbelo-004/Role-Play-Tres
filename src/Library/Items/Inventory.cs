@@ -1,4 +1,9 @@
-﻿namespace Ucu.Poo.RoleplayGame;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+
+namespace Ucu.Poo.RoleplayGame;
 
 public class Inventory
 {
