@@ -42,6 +42,7 @@ public class Enemies : ICharacter
     {
         get { return items.Sum(item => item.DeffenseValue); }
     }
+
     public bool Attack(ICharacter target)
     {
 
@@ -56,6 +57,7 @@ public class Enemies : ICharacter
         {
             target.Health -= damage;
         }
+
         return true;
     }
 
@@ -64,29 +66,3 @@ public class Enemies : ICharacter
         this.Health -= damage;
     }
 }
-
-
-       
-    
-    
-   
-   
-    
-
-   
-
-
-
-
-
-
-
-
-
-
-    
-
-    
-    
-  
-    
