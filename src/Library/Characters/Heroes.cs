@@ -9,14 +9,15 @@ public class Heroes : ICharacter
     public string Name { get; set; }
     public int Health { get; set; }
     public int VictoryPoints { get; set; }
-
+    public int AttackValue { get; set; }
     private List<IItem> items = new List<IItem>();
-
-    public Heroes(string name, int health, int victoryPoints)
+    
+    public Heroes(string name, int health, int victoryPoints, int attackValue)
     {
         Name = name;
         Health = health;
         VictoryPoints = victoryPoints;
+        AttackValue = attackValue;
     }
 
     public void AddItem(IItem item)
@@ -35,10 +36,7 @@ public class Heroes : ICharacter
         this.Health += Health;
     }
 
-    public int AttackValue
-    {
-        get { return items.Sum(item => item.AttackValue); }
-    }
+    
 
     public int DeffenseValue
     {

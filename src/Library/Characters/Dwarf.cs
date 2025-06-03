@@ -3,7 +3,7 @@ namespace Ucu.Poo.RoleplayGame;
 
 public class Dwarf: ICharacter
 {
-    private int health = 90;
+    private int health = 75;
 
     private List<IItem> items = new List<IItem>();
 

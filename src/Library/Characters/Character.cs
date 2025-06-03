@@ -9,27 +9,18 @@ namespace Ucu.Poo.RoleplayGame
         public int Health { get; set; }
 
         private List<IItem> items;
+        
+        public int AttackValue { get; set; }
 
-        public Character(string name, int health, List<IItem> items)
+        public Character(string name, int health, List<IItem> items, int attackvalue )
         {
             Name = name;
             Health = health;
             this.items = items ?? new List<IItem>();
-            
+            AttackValue = attackvalue;
         }
 
-        public int AttackValue
-        {
-            get
-            {
-                int total = 0;
-                foreach (var item in items)
-                {
-                    total += item.AttackValue;
-                }
-                return total;
-            }
-        }
+        
 
         public int DeffenseValue
         {

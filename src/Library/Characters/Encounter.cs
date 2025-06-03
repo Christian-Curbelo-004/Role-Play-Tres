@@ -7,11 +7,11 @@ public class Encounter
     public static void Main(string[] args)
     {
         // Name, life and list items
-        var heroe1 = new Character("Aragorn", 100, new List<IItem>());
-        var heroe2 = new Character("Legolas", 8, new List<IItem>());
+        var heroe1 = new Character("Aragorn", 100, new List<IItem>(), 20);
+        var heroe2 = new Character("Legolas", 8, new List<IItem>(), 12);
 
-        var enemie1 = new Character("Orco", 5, new List<IItem>());
-        var enemie2 = new Character("Troll", 12, new List<IItem>());
+        var enemie1 = new Character("Orco", 5, new List<IItem>(), 34);
+        var enemie2 = new Character("Troll", 12, new List<IItem>(),17);
 
         var heroes = new List<ICharacter> { heroe1, heroe2 };
         var enemies = new List<ICharacter> { enemie1, enemie2};
