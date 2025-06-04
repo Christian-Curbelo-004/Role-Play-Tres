@@ -9,14 +9,16 @@ public class Heroes : ICharacter
     public string Name { get; set; }
     public int Health { get; set; }
     public int VictoryPoints { get; set; }
+    public int EarnedPoints { get; set; }
     public int AttackValue { get; set; }
     private List<IItem> items = new List<IItem>();
     
-    public Heroes(string name, int health, int victoryPoints, int attackValue)
+    public Heroes(string name, int health, int victoryPoints, int attackValue, int earnedPoints)
     {
         Name = name;
         Health = health;
         VictoryPoints = victoryPoints;
+        EarnedPoints = EarnedPoints;
         AttackValue = attackValue;
     }
 
@@ -43,12 +45,12 @@ public class Heroes : ICharacter
         get  {return items.Sum(item => item.DeffenseValue);}
     }
 
-    public bool Attack(ICharacter target)
+    public int Attack(ICharacter target)
     {
         if (this.Health <= 0 || target.Health <= 0)
         {
             Console.WriteLine("No puede atacar si esta muerto o si el objetivo ya murio");
-            return false;
+            return 0;
         }
 
         int damage = this.AttackValue - target.DeffenseValue;
@@ -57,12 +59,14 @@ public class Heroes : ICharacter
             target.Health -= damage;
             if (target.Health <= 0 && target is Enemies enemy)
             {
-                VictoryPoints += enemy.VictoryPoints;
-                Console.WriteLine($"Heroes won {enemy.VictoryPoints}  ");
+                VictoryPoints = 0;
+                VictoryPoints ++;
+                
+                Console.WriteLine($"Heroes won {VictoryPoints} points.  ");
             }
         }
 
-        return true;
+        return VictoryPoints;
     }
 
     public void ReceiveAttack(int damage)
