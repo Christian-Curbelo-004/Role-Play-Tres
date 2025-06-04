@@ -26,12 +26,12 @@ class Program
         gimli.Cure(123);
         Console.WriteLine($"Someone cured Gimli. Gimli now has ❤️ {gimli.Health}");
 
-        Heroes heroes = new Heroes("Aragorn", 100, 1, 100, 1);
-        Enemies enemies = new Enemies("Troll", 30, 0, 10);
+        Heroes heroes = new Heroes("Aragorn", 100, 0, 100, 0);
+        Enemies enemies = new Enemies("Troll", 30, 1, 10);
 
 
         Console.WriteLine($"\n{heroes.Name} attacks {enemies.Name} with ⚔️ {heroes.AttackValue}");
-        enemies.ReceiveAttack(heroes.AttackValue);
+        heroes.Attack(enemies);
 
         int health = heroes.Health;
         int health2 = heroes.Health;
@@ -47,5 +47,6 @@ class Program
         {
             Console.WriteLine($"{heroes.Name} won {heroes.VictoryPoints} points");
         }
+        
     }
 }

@@ -10,7 +10,7 @@ public class Enemies : ICharacter
 {
     public string Name { get; set; }
     public int Health { get; set; }
-    public int VictoryPoints { get; private set; }
+    public int VictoryPoints { get; set; }
     public int AttackValue {get; set; }
     private List<IItem> items = new List<IItem>();
 

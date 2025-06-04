@@ -6,7 +6,7 @@ public class Encounter
 {
     public static void Main(string[] args)
     {
-        // Name, life and list items
+        // Nombre, vida e items
         var heroe1 = new Character("Aragorn", 100, new List<IItem>(), 20);
         var heroe2 = new Character("Legolas", 8, new List<IItem>(), 12);
 
@@ -16,13 +16,13 @@ public class Encounter
         var heroes = new List<ICharacter> { heroe1, heroe2 };
         var enemies = new List<ICharacter> { enemie1, enemie2};
 
-        // PV about character (with dictionary)
+        // PV sobre los personajes (con diccionario)
         var points = new Dictionary<ICharacter, int>();
         foreach (var h in heroes) points[h] = 0;
 
         while (HayVivos(heroes) && HayVivos(enemies))
         {
-            // Enemies attack first
+            // Enemigos atacan primero
             foreach (var enemie in enemies)
             {
                 if (enemie.Health <= 0) continue;
@@ -34,7 +34,7 @@ public class Encounter
                 }
             }
 
-            // Living heroes attack all living enemies
+            // Los heroes  atacan a los enemigos
             foreach (var heroe in heroes)
             {
                 if (heroe.Health <= 0) continue;
@@ -46,13 +46,13 @@ public class Encounter
                         Console.WriteLine($"{heroe.Name} attacks  {enemie.Name}. Life of {enemie.Name}: {enemie.Health}");
                         if (enemie.Health <= 0)
                         {
-                            // Won 3 points for each enemy defeated
+                            // El heroe se quedo los tres puntos del enemigo derrotado
                             points[heroe] += 3;
                             Console.WriteLine($"{heroe.Name} won 3 points and now has {points[heroe]} points.");
-                            // If it reaches 5 or more points, it heals 5 life points
+                            
                             if (points[heroe] >= 5)
                             {
-                                heroe.Cure(5);
+                                heroe.Cure(100);
                                 Console.WriteLine($"{heroe.Name} he was cured and now has{heroe.Health} of life");
                             }
                         }
@@ -62,9 +62,9 @@ public class Encounter
         }
         
         if (HayVivos(heroes))
-            Console.WriteLine("¡The heroes won!");
+            Console.WriteLine("¡Los heroes ganaron");
         else
-            Console.WriteLine("¡The enemies won!");
+            Console.WriteLine("¡Los enemigos ganaron");
     }
 
     static bool HayVivos(List<ICharacter> list)
