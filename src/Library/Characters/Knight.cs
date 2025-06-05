@@ -34,16 +34,16 @@ public class Knight: ICharacter
         }
     }
 
-    public int DefenseValue
+    public int DeffenseValue
     {
         get
         {
             int value = 0;
             foreach (IItem item in this.items)
             {
-                if (item is IDefenseItem)
+                if (item is IDeffenseItem)
                 {
-                    value += (item as IDefenseItem).DefenseValue;
+                    value += (item as IDeffenseItem).DeffenseValue;
                 }
             }
             return value;
@@ -56,7 +56,7 @@ public class Knight: ICharacter
         {
             return this.health;
         }
-        private set
+        set
         {
             this.health = value < 0 ? 0 : value;
         }
@@ -64,13 +64,13 @@ public class Knight: ICharacter
 
     public void ReceiveAttack(int power)
     {
-        if (this.DefenseValue < power)
+        if (this.DeffenseValue < power)
         {
-            this.Health -= power - this.DefenseValue;
+            this.Health -= power - this.DeffenseValue;
         }
     }
 
-    public void Cure()
+    public void Cure(int  health)
     {
         this.Health = 100;
     }

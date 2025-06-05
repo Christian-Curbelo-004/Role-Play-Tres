@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Xml.Linq;
 
 namespace Ucu.Poo.RoleplayGame.Program;
 
 class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
         SpellsBook book = new SpellsBook();
         book.AddSpell(new SpellOne());
@@ -22,8 +23,30 @@ class Program
 
         Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
 
-        gimli.Cure();
-
+        gimli.Cure(123);
         Console.WriteLine($"Someone cured Gimli. Gimli now has ❤️ {gimli.Health}");
+
+        Heroes heroes = new Heroes("Aragorn", 100, 0, 100, 0);
+        Enemies enemies = new Enemies("Troll", 30, 1, 10);
+
+
+        Console.WriteLine($"\n{heroes.Name} attacks {enemies.Name} with ⚔️ {heroes.AttackValue}");
+        heroes.Attack(enemies);
+
+        int health = heroes.Health;
+        int health2 = heroes.Health;
+
+        Console.WriteLine($"{enemies.Name} now has ❤️ {enemies.Health}");
+
+        if (enemies.Health > 0)
+        {
+            Console.WriteLine($"{enemies.Name} counter-attacks with ⚔️ {enemies.AttackValue}");
+            heroes.ReceiveAttack(enemies.AttackValue);
+        }
+        else
+        {
+            Console.WriteLine($"{heroes.Name} won {heroes.VictoryPoints} points");
+        }
+        
     }
 }

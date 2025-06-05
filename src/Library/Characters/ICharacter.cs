@@ -1,20 +1,21 @@
-namespace Ucu.Poo.RoleplayGame;
+        namespace Ucu.Poo.RoleplayGame;
 
-public interface ICharacter
-{
-    string Name { get; set; }
+        public interface ICharacter
+        {
+            string Name { get; set; }
 
-    int Health { get; }
+             int Health { get; set; }
 
-    int AttackValue { get; }
+            int AttackValue { get; }
 
-    int DefenseValue { get; }
+            int DeffenseValue { get; }
 
-    void AddItem(IItem item);
+            void AddItem(IItem item);
 
-    void RemoveItem(IItem item);
+            void RemoveItem(IItem item);
 
-    void Cure();
+            void Cure(int health);
 
-    void ReceiveAttack(int power);
-}
+            
+            void ReceiveAttack(int damage);
+        }

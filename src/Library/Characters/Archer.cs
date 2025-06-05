@@ -3,9 +3,9 @@ namespace Ucu.Poo.RoleplayGame;
 
 public class Archer: ICharacter
 {
-    private int health = 100;
+    public int health = 100;
 
-    private List<IItem> items = new List<IItem>();
+    private Inventory inventory = new Inventory();
 
     public Archer(string name)
     {
@@ -14,40 +14,9 @@ public class Archer: ICharacter
         this.AddItem(new Bow());
         this.AddItem(new Helmet());
     }
-
     public string Name { get; set; }
-
-    public int AttackValue
-    {
-        get
-        {
-            int value = 0;
-            foreach (IItem item in this.items)
-            {
-                if (item is IAttackItem)
-                {
-                    value += (item as IAttackItem).AttackValue;
-                }
-            }
-            return value;
-        }
-    }
-
-    public int DefenseValue
-    {
-        get
-        {
-            int value = 0;
-            foreach (IItem item in this.items)
-            {
-                if (item is IDefenseItem)
-                {
-                    value += (item as IDefenseItem).DefenseValue;
-                }
-            }
-            return value;
-        }
-    }
+    public int AttackValue => inventory.AttackValue;
+    public int DeffenseValue => inventory.DeffenseValue;
 
     public int Health
     {
@@ -55,32 +24,31 @@ public class Archer: ICharacter
         {
             return this.health;
         }
-        private set
+        set
         {
             this.health = value < 0 ? 0 : value;
         }
     }
-
     public void ReceiveAttack(int power)
     {
-        if (this.DefenseValue < power)
+        if (this.DeffenseValue < power)
         {
-            this.Health -= power - this.DefenseValue;
+            this.Health -= power - this.DeffenseValue;
         }
     }
 
-    public void Cure()
+    public void Cure(int health)
     {
         this.Health = 100;
     }
 
     public void AddItem(IItem item)
     {
-        this.items.Add(item);
+        inventory.AddItem(item);
     }
 
     public void RemoveItem(IItem item)
     {
-        this.items.Remove(item);
+        inventory.RemoveItem(item);
     }
 }
