@@ -1,20 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using Ucu.Poo.RoleplayGame;
 
 public class Encounter 
 {
-    public static void Main(string[] args)
+    public static string SimulateEncounter(List<ICharacter> heroes, List<ICharacter> enemies,
+        Dictionary<ICharacter, int> victoryPoints)
     {
         // Nombre, vida e items
         var heroe1 = new Character("Aragorn", 100, new List<IItem>(), 20);
         var heroe2 = new Character("Legolas", 8, new List<IItem>(), 12);
 
         var enemie1 = new Character("Orco", 5, new List<IItem>(), 34);
-        var enemie2 = new Character("Troll", 12, new List<IItem>(),17);
+        var enemie2 = new Character("Troll", 12, new List<IItem>(), 17);
 
-        var heroes = new List<ICharacter> { heroe1, heroe2 };
-        var enemies = new List<ICharacter> { enemie1, enemie2};
+        //var heroes = new List<ICharacter> { heroe1, heroe2 };
+        //var enemies = new List<ICharacter> { enemie1, enemie2};
 
         // PV sobre los personajes (con diccionario)
         var points = new Dictionary<ICharacter, int>();
@@ -43,13 +45,14 @@ public class Encounter
                     if (enemie.Health > 0)
                     {
                         enemie.ReceiveAttack(heroe.AttackValue);
-                        Console.WriteLine($"{heroe.Name} attacks  {enemie.Name}. Life of {enemie.Name}: {enemie.Health}");
+                        Console.WriteLine(
+                            $"{heroe.Name} attacks  {enemie.Name}. Life of {enemie.Name}: {enemie.Health}");
                         if (enemie.Health <= 0)
                         {
                             // El heroe se quedo los tres puntos del enemigo derrotado
                             points[heroe] += 3;
                             Console.WriteLine($"{heroe.Name} won 3 points and now has {points[heroe]} points.");
-                            
+
                             if (points[heroe] >= 5)
                             {
                                 heroe.Cure(100);
@@ -60,11 +63,18 @@ public class Encounter
                 }
             }
         }
-        
+
         if (HayVivos(heroes))
+        {
             Console.WriteLine("¡Los heroes ganaron");
+        
+            return "heroes"; 
+        }
         else
+        {
             Console.WriteLine("¡Los enemigos ganaron");
+            return "enemies";
+        }
     }
 
     static bool HayVivos(List<ICharacter> list)
